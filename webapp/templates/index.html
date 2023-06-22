@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Content</th>
+        </tr>
+        {% for secret in secrets %}
+            <tr>
+                <td>{{ secret.id }}</td>
+                <td>{{ secret.description }}</td>
+                <td>{{ secret.content }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
