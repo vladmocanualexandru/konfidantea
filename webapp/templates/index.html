@@ -1,24 +1,24 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link  rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='favicon.svg') }}" color="black">
 
-{% block title %}
-    Home
-{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 
-{% block content %}
+    <title>KonfidanTea</title>
+    <style>
+    </style>
+</head>
+<body style="text-align: center;">
+    <img src="{{ url_for('static', filename='logo_vertical.svg') }}" style="width:40em;"><br>
+    <a href="{{ url_for('_manage') }}">Manage</a><br>
+    <a href="#" onclick="initDb(this)" data-url="{{ url_for('_init') }}">Init</a>
 
-    <table border="1">
-        <tr>
-            <th>Id</th>
-            <th>Description</th>
-            <th>Content</th>
-        </tr>
-        {% for secret in secrets %}
-            <tr>
-                <td>{{ secret.id }}</td>
-                <td>{{ secret.description }}</td>
-                <td>{{ secret.content }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-
-{% endblock %}
+    <script src="{{ url_for('static', filename='jquery-3.7.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='base.js') }}"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

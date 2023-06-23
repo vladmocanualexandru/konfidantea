@@ -5,13 +5,28 @@
     <link  rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
     <link rel="mask-icon" href="{{ url_for('static', filename='favicon.svg') }}" color="black">
 
+    <link rel="stylesheet" href="{{ url_for('static', filename='glyphicons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+
     <title>{% block title %} {% endblock %} - KonfidanTea</title>
     <style>
     </style>
 </head>
 <body>
-    <div class="content">
+    <div id="header">
+        <img src="{{ url_for('static', filename='logo_horizontal.svg') }}" style="width:40em;">
+    </div>
+    <div id="navbar">
+        <a href="{{ url_for('_index') }}">Home</a>
+        <a href="{{ url_for('_manage') }}">Browse</a>
+        <a href="#" onclick="initDb(this)" data-url="{{ url_for('_init') }}">Init</a>
+    </div>
+    <div id="content">
         {% block content %} {% endblock %}
     </div>
+    
+    <script src="{{ url_for('static', filename='jquery-3.7.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='base.js') }}"></script>
+    {% block scripts %}{% endblock %}
 </body>
 </html>

@@ -15,6 +15,10 @@ def add_encrypted_secret(content, description):
 
     print("Created encrypted secret with id ", new_entry.id)
 
+def delete_secret(id):
+    db.session.delete(EncryptedSecret.query.get_or_404(id))
+    db.session.commit()
+
 def read_all_secrets():
     return EncryptedSecret.query.all()
 

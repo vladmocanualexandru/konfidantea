@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Secrets
+{% endblock %}
+
+{% block content %}
+
+    {% set altDark = {'value': 0} %}
+
+    <table>
+        <tr>
+            <th class="centered">Id</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        {% for secret in secrets %}
+
+            {% if altDark.value == 1 %}
+                <tr class="dark">
+            {% else %}
+                <tr>
+            {% endif %}
+
+                <td class="centered">{{ secret.id }}</td>
+                <td>{{ secret.description }}</td>
+                <td class="centered"><span class="glyphicon glyphicon-trash button" onclick="deleteSecret(this)" data-url="{{ url_for('_delete') }}" data-secret-id="{{ secret.id }}"></span></td>
+            </tr>
+
+            {% if altDark.update({'value': 1 - altDark.value }) %}{% endif %}
+        {% endfor %}
+    </table>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='manage.js') }}"></script>
+{% endblock %}
