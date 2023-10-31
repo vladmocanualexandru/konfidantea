@@ -21,11 +21,6 @@ a:hover {
     color: black;
 }
 
-table {
-    display: inline-block;
-    margin-bottom: -0.3em;
-}
-
 th, td {
     padding: 0.5em;
     text-align: left;
@@ -69,42 +64,39 @@ div.frameBottom {
     padding:0em 1em 1em 2em;
 }
 
-#header, #content {
-    padding-left: 2em;
-}
-
 .button:hover {
     cursor: pointer;
 }
 
 form {
     min-width: 20em;
-    display: inline-block;
     background: #ffe481;
 }
 
 form div.header {
-    padding: 0.5em;
     text-align: left;
     background: #FFC900;
     border-bottom: 0.1em solid black;
     min-width: 10em;
     font-weight: bold;
     text-align: center;
+    padding: 0.5em 0;
 }
 
 form div.content {
-    padding: 1em 1em 0 1em;
     text-align: left;
+    padding: 1em 1em;
+}
+
+form div.content div.spacer1em {
+    height:1em;
 }
 
 form label, form input, form textarea {
     display: block;
     min-width:100%;
-    margin:0.5em 0 2em 0;
 }
 
-form label {
-    margin-bottom:0.5em;
-}
+/* form label {
+} */
 

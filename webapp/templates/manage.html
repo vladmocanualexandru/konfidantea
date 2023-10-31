@@ -16,6 +16,7 @@
         <table>
             <tr>
                 <th class="centered">Id</th>
+                <th>RK alias</th>
                 <th>Description</th>
                 <th></th>
             </tr>
@@ -28,6 +29,7 @@
                 {% endif %}
                     
                         <td class="centered">{{ secret.id }}</td>
+                        <td>{{ secret.remote_key_alias }}</td>
                         <td>{{ secret.description }}</td>
                         <td class="centered"><span class="glyphicon glyphicon-trash button" onclick="deleteSecret(this)" data-url="{{ url_for('_delete') }}" data-return-url="{{ url_for('_manage') }}" data-secret-id="{{ secret.id }}"></span></td>
                     </tr>

@@ -1,0 +1,6 @@
+div.toolContainer {
+    display: inline-block;
+    min-width: 0; 
+    margin:0.5em;
+    vertical-align: top;
+}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='tools.css') }}">
+{% endblock %}
+
+{% block title %}
+    Tools
+{% endblock %}
+
+{% block content %}
+
+    <div class="toolContainer">
+        <div class="frameTop"></div>
+        <form>
+
+            <div class="header">
+                Key generator
+            </div>
+
+            <div class="content">
+                <div style="text-align: center;">
+                    <a href="#" onclick="generateKey(this)">Generate</a>
+                </div>
+
+                <div class="spacer1em"></div>
+
+                <label for="kgKeyTA">Generated key</label>
+                <textarea id="kgKeyTA" type="textarea" rows="2" readonly></textarea>
+            </div>
+
+        </form> 
+        <div class="frameBottom"></div>
+    </div>
+
+    <div class="toolContainer">
+        <div class="frameTop"></div>
+        <form>
+
+            <div class="header">
+                Encryptor / Decryptor
+            </div>
+            <div class="content">
+                <label for="eContentTA">Content</label>
+                <textarea id="eContentTA" type="textarea" name="content" rows="10"></textarea>
+                
+                <div class="spacer1em"></div>
+
+                <label for="eKeyTA">Key</label>
+                <textarea id="eKeyTA" type="textarea"  rows="2"></textarea>
+                
+                <div class="spacer1em"></div>
+
+                <div style="text-align: center;">
+                    <a href="#" onclick="encrypt(this)" data-url="{{ url_for('_tools_encrypt') }}">Encrypt</a>
+                    <a href="#" onclick="decrypt(this)" data-url="{{ url_for('_tools_decrypt') }}">Decrypt</a>
+                </div>
+
+                <div class="spacer1em"></div>
+
+                <label for="eECTA">Encrypted content</label>
+                <textarea id="eECTA" type="textarea"  rows="5" readonly></textarea>
+
+            </div>
+
+        </form> 
+        <div class="frameBottom"></div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='tools.js') }}"></script>
+{% endblock %}

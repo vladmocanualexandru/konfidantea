@@ -1,7 +1,7 @@
 from webapp import app, db
 from flask import request, render_template
 from webapp.db_utils import create_db, add_encrypted_secret, read_all_secrets, find_secret, delete_secret
-from webapp.secret_utils import decrypt, encrypt
+from webapp.secret_utils import decrypt, encrypt, get_rk_alias, decryptContent, encrypt_content
 
 @app.route('/')
 def _index():
@@ -28,8 +28,8 @@ def _add_form():
 def _add():
     content = encrypt(request.form['content'])
     description = request.form['description']
-
-    add_encrypted_secret(content, description)
+    rk_alias = get_rk_alias()
+    add_encrypted_secret(rk_alias, content, description)
 
     return render_template('manage.html', secrets=read_all_secrets())
 
@@ -46,3 +46,21 @@ def _init():
     create_db()
     
     return "OK"
+
+@app.route('/tools',methods = ['GET'])
+def _tools():
+    return render_template('tools.html')
+
+@app.route('/tools/encrypt',methods = ['POST'])
+def _tools_encrypt():
+    content = request.values["content"]
+    key = request.values["key"]
+
+    return encrypt_content(content, key)
+
+@app.route('/tools/decrypt',methods = ['POST'])
+def _tools_decrypt():
+    content = request.values["content"]
+    key = request.values["key"]
+
+    return decryptContent(content, key)

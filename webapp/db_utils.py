@@ -4,8 +4,9 @@ from webapp.encrypted_secret import EncryptedSecret
 def create_db():
     db.create_all()
 
-def add_encrypted_secret(content, description):
+def add_encrypted_secret(rk_alias, content, description):
     new_entry = EncryptedSecret(
+        remote_key_alias = rk_alias,
         content = content,
         description = description
     )
