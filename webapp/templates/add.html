@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='add.css') }}">
+{% endblock %}
+
+{% block title %}
+    Add
+{% endblock %}
+
+{% block content %}
+    <div style="display: inline-block; min-width: 0;">
+        <div class="frameTop"></div>
+        <form method="POST" action="{{ url_for('_add') }}">
+
+                <div class="header">
+                    Add secret
+                </div>
+                <div class="content">
+                    <label for="contentTA">Content</label>
+                    <textarea id="contentTA" type="textarea" name="content" rows="3"></textarea>
+
+                    <label for="descriptionTA">Description</label>
+                    <textarea id="descriptionTA" type="textarea" name="description" rows="3"></textarea>
+
+                    <div style="text-align: right;">
+                        <a href="#" onclick="addSecret(this)">Add</a>
+                    </div>
+                </div>
+
+        </form> 
+        <div class="frameBottom"></div>
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='add.js') }}"></script>
+{% endblock %}

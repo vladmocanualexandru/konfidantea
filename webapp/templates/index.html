@@ -15,7 +15,7 @@
 <body style="text-align: center;">
     <img src="{{ url_for('static', filename='logo_vertical.svg') }}" style="width:40em;"><br>
     <a href="{{ url_for('_manage') }}">Manage</a><br>
-    <a href="#" onclick="initDb(this)" data-url="{{ url_for('_init') }}">Init</a>
+    <a href="#" onclick="initDb(this)" data-url="{{ url_for('_init') }}" data-return-url="{{ url_for('_add') }}">Initialize</a>
 
     <script src="{{ url_for('static', filename='jquery-3.7.0.min.js') }}"></script>
     <script src="{{ url_for('static', filename='base.js') }}"></script>

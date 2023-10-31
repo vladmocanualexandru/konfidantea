@@ -23,6 +23,7 @@ a:hover {
 
 table {
     display: inline-block;
+    margin-bottom: -0.3em;
 }
 
 th, td {
@@ -44,6 +45,22 @@ tr.dark {
     background: #ffe481;
 }
 
+div.frameTop, div.frameBottom {
+    background: #FFC900;
+    height:1em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+div.frameBottom {
+    background: #ffe481;
+    height:1em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
 #header {
     padding: 1em;
 }
@@ -59,3 +76,35 @@ tr.dark {
 .button:hover {
     cursor: pointer;
 }
+
+form {
+    min-width: 20em;
+    display: inline-block;
+    background: #ffe481;
+}
+
+form div.header {
+    padding: 0.5em;
+    text-align: left;
+    background: #FFC900;
+    border-bottom: 0.1em solid black;
+    min-width: 10em;
+    font-weight: bold;
+    text-align: center;
+}
+
+form div.content {
+    padding: 1em 1em 0 1em;
+    text-align: left;
+}
+
+form label, form input, form textarea {
+    display: block;
+    min-width:100%;
+    margin:0.5em 0 2em 0;
+}
+
+form label {
+    margin-bottom:0.5em;
+}
+

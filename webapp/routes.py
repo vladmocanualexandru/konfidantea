@@ -1,7 +1,7 @@
 from webapp import app, db
 from flask import request, render_template
 from webapp.db_utils import create_db, add_encrypted_secret, read_all_secrets, find_secret, delete_secret
-from webapp.secret_utils import decrypt
+from webapp.secret_utils import decrypt, encrypt
 
 @app.route('/')
 def _index():
@@ -15,16 +15,23 @@ def _manage():
 def _decrypt():
     secret = find_secret(int(request.form['id']))
 
-    return decrypt(secret.content)
+    if secret != None:
+        return decrypt(secret.content)
+    else:
+        return "ERROR-SECRET-NOT-FOUND"
+
+@app.route('/add',methods = ['GET'])
+def _add_form():
+    return render_template('add.html')
 
 @app.route('/add',methods = ['POST'])
 def _add():
-    content = request.form['content']
+    content = encrypt(request.form['content'])
     description = request.form['description']
 
     add_encrypted_secret(content, description)
 
-    return "OK"
+    return render_template('manage.html', secrets=read_all_secrets())
 
 @app.route('/delete',methods = ['POST'])
 def _delete():

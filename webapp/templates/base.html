@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='glyphicons.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
 
+    {% block style %}{% endblock %}
+
     <title>{% block title %} {% endblock %} - KonfidanTea</title>
     <style>
     </style>
@@ -19,7 +21,8 @@
     <div id="navbar">
         <a href="{{ url_for('_index') }}">Home</a>
         <a href="{{ url_for('_manage') }}">Browse</a>
-        <a href="#" onclick="initDb(this)" data-url="{{ url_for('_init') }}">Init</a>
+        <a href="{{ url_for('_add_form') }}">Add</a>
+        <a href="#" onclick="initDb(this)" data-url="{{ url_for('_init') }}" data-return-url="{{ url_for('_add') }}" >Initialize</a>
     </div>
     <div id="content">
         {% block content %} {% endblock %}
