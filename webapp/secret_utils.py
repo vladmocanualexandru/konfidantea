@@ -70,4 +70,4 @@ def encrypt(content):
 def get_rk_alias():
     encryptedRemoteKey = getEncryptedRemoteKey()
 
-    return "RK-%s" % (encryptedRemoteKey[-4:])
+    return "****%s" % (encryptedRemoteKey[-4:])
