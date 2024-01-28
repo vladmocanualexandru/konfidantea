@@ -14,7 +14,6 @@ def _manage():
 @app.route('/decrypt',methods = ['POST'])
 def _decrypt():
     secret = find_secret(int(request.form['id']))
-
     if secret != None:
         return decrypt(secret.content)
     else:
