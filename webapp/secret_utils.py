@@ -20,10 +20,12 @@ def getEncryptedRemoteKey():
 
     return encryptedRemoteKey
 
-def getRemoteKey():
+def getRemoteKey(logger):
     # read local key (not encrypted)
+    logger.debug("Reading local key...")
     localKey = environ.get('KONFIDANTEA_LOCAL_KEY')
 
+    logger.debug("Reading encrypted remote key...")
     encryptedRemoteKey = getEncryptedRemoteKey()
 
     if encryptedRemoteKey == None:
@@ -31,25 +33,30 @@ def getRemoteKey():
         return None
     else:
         # decrypt remote key using local key
+        logger.debug("Decrypting remote key...")
         remoteKey = decryptContent(encryptedRemoteKey, localKey)
 
         return remoteKey
 
 
-def decrypt(encrypted_secret):
+def decrypt(encrypted_secret, logger):
     try:
-        remoteKey = getRemoteKey()
+        logger.debug("Reading remote key...")
+        remoteKey = getRemoteKey(logger)
 
         if remoteKey != None:
+            logger.debug("Decrypting secret...")
             # according to the specified index, decrypt, using the remote key, one of the encrypted passwords
             decryptedPassword = decryptContent(encrypted_secret, remoteKey)
 
+            logger.debug("Secret decrypted. Returning to client...")
             return decryptedPassword
         else:
+            logger.error("Remote key missing!")
             return "ERROR-REMOTE-KEY-MISSING"
     except Exception as e:
-        # in case anything goes wrong, write ERROR to the temporary password file
         print(e)
+        logger.error("Unknown error occured! - %s" % str(e))
         return "ERROR-UNKNOWN"
     
 def encrypt_content(content, key):

@@ -1,3 +1,5 @@
 FLASK_APP=konfidantea.py
 FLASK_ENV=development
-FLASK_RUN_PORT=5010
+FLASK_RUN_PORT=5001
+
+TEST_PROPERTY=foobar_flask

@@ -23,5 +23,6 @@ def delete_secret(id):
 def read_all_secrets():
     return EncryptedSecret.query.all()
 
-def find_secret(id):
+def find_secret(id, logger):
+    logger.debug("Searching for secret with id=%s ..." % id)
     return EncryptedSecret.query.filter_by(id=id).first()
