@@ -2,6 +2,4 @@ database.db
 .venv
 __pycache__
 remote_key.txt
-stderr.log
-stdout.log
-waitress.log
+logs/*.log

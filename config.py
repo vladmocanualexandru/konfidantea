@@ -1,4 +1,4 @@
 import os
 
 class Config(object):
-    TEST_PROPERTY = 'foobar_waitress'
+    LOGS_LOCATION = 'D:\\Repositories\\personal\\konfidantea\\logs\\konfidantea.log'

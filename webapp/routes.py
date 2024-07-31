@@ -4,9 +4,9 @@ from flask import request, render_template
 from webapp.db_utils import create_db, add_encrypted_secret, read_all_secrets, find_secret, delete_secret
 from webapp.secret_utils import decrypt, encrypt, get_rk_alias, decryptContent, encrypt_content
 
-log_global = Logger("global")
-log_db_utils = Logger("db_utils")
-log_secret_utils = Logger("secret_utils")
+log_global = Logger("global", app.config['LOGS_LOCATION'])
+log_db_utils = Logger("db_utils", app.config['LOGS_LOCATION'])
+log_secret_utils = Logger("secret_utils", app.config['LOGS_LOCATION'])
 
 @app.route('/')
 def _index():
