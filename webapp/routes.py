@@ -16,7 +16,7 @@ def _index():
 @app.route('/manage')
 def _manage():
     log_global.debug("Management page requested")
-    return render_template('manage.html', secrets=read_all_secrets())
+    return render_template('manage.html', secrets=read_all_secrets(log_db_utils))
 
 @app.route('/decrypt',methods = ['POST'])
 def _decrypt():
@@ -41,19 +41,19 @@ def _add_form():
 @app.route('/add',methods = ['POST'])
 def _add():
     log_global.debug("Secret add requested")
-    content = encrypt(request.form['content'])
+    content = encrypt(request.form['content'], log_secret_utils)
     description = request.form['description']
     rk_alias = get_rk_alias()
-    add_encrypted_secret(rk_alias, content, description)
+    add_encrypted_secret(rk_alias, content, description, log_db_utils)
 
-    return render_template('manage.html', secrets=read_all_secrets())
+    return render_template('manage.html', secrets=read_all_secrets(log_db_utils))
 
 @app.route('/delete',methods = ['POST'])
 def _delete():
     log_global.debug("Secret delete requested")
     id = request.values["id"]
 
-    delete_secret(id)
+    delete_secret(id, log_db_utils)
 
     return "OK"
 

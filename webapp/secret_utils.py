@@ -65,8 +65,8 @@ def encrypt_content(content, key):
 
     return encryptedContent
 
-def encrypt(content):
-    remoteKey = getRemoteKey()
+def encrypt(content, logger):
+    remoteKey = getRemoteKey(logger)
 
     if remoteKey != None:
         # according to the specified index, decrypt, using the remote key, one of the encrypted passwords
