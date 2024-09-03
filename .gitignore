@@ -3,3 +3,4 @@ database.db
 __pycache__
 remote_key.txt
 logs/*.log
+poetry.lock
